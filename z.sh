@@ -64,7 +64,8 @@ cat > ./$1.json <<EOF
   $v2ray_outbound
   $v2ray_outboundDetour
   $v2ray_transport
-  $v2ray_dns$v2ray_routing
+  $v2ray_dns
+  $v2ray_routing
 EOF
 }
 outputc(){
@@ -74,7 +75,6 @@ cat > ./$1.json <<EOF
   $client_outbound
   $client_outboundDetour
   $client_dns
-  $client_transport
   $client_routing
 EOF
 }
@@ -88,11 +88,12 @@ input v2ray_uuid UUID ${UUID}
 
 echo "---------------------------------"
 echo "0.普通最简设置(默认)"
-echo "1.设置websocket路径转发(需要http服务器支持)"
+echo "1.设置websocket路径转发(需要http服务器配合转发分流路径)"
 echo "2.设置http头伪装"
-echo "3.设置域名tls伪装(需要服务器绑定域名和域名证书)"
+echo "3.设置域名tls伪装(需要配置文件设置为443端口,服务器绑定域名和域名证书)"
 echo "4.设置kcp"
-input select "数字0-4" 0
+echo "5.设置WebSocket"
+input select "数字0-5" 0
 if [[ "${select}" == "1" ]];then
   #设置 websocket 路径,使用 HTTP 服务器（如 NGINX / caddy /apahe）分流.
   input v2ray_url "域名" "-"
@@ -156,13 +157,12 @@ elif [[ "${select}" == "3" ]];then
   echo "---------------------------------------------------------"
   echo "请输入证书路径,默认将会调用输入路径里面的v2ray.crt和v2ray.key"
   input v2ray_key "证书目录路径" "/etc/v2ray/"
-  [ -z ${v2ray_key} ] && v2ray_key="/etc/v2ray/"
   [ ! -f "${v2ray_key}v2ray.crt" ] && echo "没有找到${v2ray_key}v2ray.crt" && exit 1
   [ ! -f "${v2ray_key}v2ray.key" ] && echo "没有找到${v2ray_key}v2ray.key" && exit 1
   certificates=",
     \"streamSettings\": {
       \"network\": \"tcp\",
-      \"security\": \"none\",
+      \"security\": \"tls\",
       \"tlsSettings\": {
         \"serverName\": \"${v2ray_tls}\",
         \"allowInsecure\": false,
@@ -172,15 +172,18 @@ elif [[ "${select}" == "3" ]];then
             \"keyFile\": \"${v2ray_key}v2ray.key\"
           }
         ]
-      },
-      \"tcpSettings\": {},
-      \"kcpSettings\": {},
-      \"wsSettings\": {}
+      }
     }"
 elif [[ ${select} == "4" ]];then
   kcp_h
   c_on=8
   kcp ${kcp_header}
+elif [[ ${select} == "5" ]];then
+  c_on=7
+  ws_s=',
+    "streamSettings":{
+      "network":"ws"
+    }'
 else
   c_on=9
   echo "选择了不设置"
@@ -206,7 +209,7 @@ v2ray_inbound="
           \"alterId\": 64
         }
       ]
-    }${v2ray_ws}${httpheaders}${certificates}${v2ray_kcp}
+    }${v2ray_ws}${httpheaders}${certificates}${v2ray_kcp}${ws_s}
   },"
 
 add_s=0
@@ -275,11 +278,11 @@ v2ray_transport="
 
 echo "------------------------"
 echo "是否创建一个shadowsocks(ss)协议:"
-input v2ray_ss "(0不,1创建)" 0
+input v2ray_ss "(0.跳过,1.创建)" 0
   if [[ "${v2ray_ss}" == "1" ]];then
   add_s=`expr ${add_s} + 1`
-  input ss_port ss端口 8080
-  echo "-------------"
+  input ss_port ss端口 10087
+  echo "----------------"
   echo "1.aes-256-cfb"
   echo "2.aes-128-cfb"
   echo "3.chacha20(默认)"
@@ -336,10 +339,10 @@ v2ray_outboundDetour='
     }
   ],'
 
-off_v2ray_dns='
+v2ray_dns='
   "dns": {
     "hosts": {
-      "baidu.com": "127.0.0.1"
+      "360.cn": "127.0.0.1"
     },
     "servers": [
       "8.8.8.8",
@@ -484,6 +487,7 @@ echo "0.跳过"
 echo "1.生成(默认)"
 input select "数字0-1" 1
 [[ "${select}" == "0" ]] && exit 1
+[[ -z ${ip} ]] && ipip
 if [[ "${select}" == "1" && "${c_on}" == "100" ]];then
   client_outbound="
   \"outbound\": {
@@ -591,18 +595,19 @@ if [[ "${select}" == "1" ]];then
     ${c_outbound},
       \"streamSettings\": {
       \"network\": \"tcp\",
-      \"security\": \"none\",
-      \"tlsSettings\": {
-        \"serverName\": \"${v2ray_tls}\",
-        \"allowInsecure\": false,
-      },
-      \"tcpSettings\": {},
-      \"kcpSettings\": {},
-      \"wsSettings\": {}
+      \"security\": \"tls\"
     },${c_mux}"
    outputc v2-kehu
 
-  elif [[ "${c_on}" == "8" ]]; then
+  elif [[ "${c_on}" == "7" ]]; then
+    ws_s=',
+    "streamSettings":{
+      "network":"ws"
+    }'
+   client_outbound="${c_outbound}${ws_s},${c_mux}"
+   outputc v2-kehu 
+
+   elif [[ "${c_on}" == "8" ]]; then
    client_outbound="${c_outbound}${v2ray_kcp},${c_mux}"
    outputc v2-kehu 
 
@@ -647,6 +652,6 @@ echo "-----------------"
 echo "服务端配置文件(v2.json)"
 echo "客户端配置(v2-kehu.json):"
 echo "域名/ip   : ${ip}"
-echo "Ｎetwork  : ${c_on} (1=ws-path,2=http伪装,3=tls,8=kcp,9=tcp)"
+echo "Ｎetwork  : ${c_on} (1=ws-path,2=http伪装,3=tls,7=websocket,8=kcp,9=tcp)"
 fi
 
