@@ -106,3 +106,5 @@ DOMAIN-SUFFIX,line-apps.com
 DOMAIN-SUFFIX,line-scdn.net
 DOMAIN-SUFFIX,line.me
 DOMAIN-SUFFIX,auroraoss.com
+DOMAIN-SUFFIX,bestappsale.com
+DOMAIN-SUFFIX,android.com
