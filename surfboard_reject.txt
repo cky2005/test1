@@ -49,3 +49,4 @@ DOMAIN-SUFFIX,flurry.com
 DOMAIN-SUFFIX,googleadservices.com
 DOMAIN-SUFFIX,analytics.map.qq.com
 DOMAIN-SUFFIX,pagead2.googlesyndication
+DOMAIN-SUFFIX,update.kiwibrowser.com
