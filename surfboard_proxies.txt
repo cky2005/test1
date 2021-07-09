@@ -113,4 +113,5 @@ DOMAIN-SUFFIX,flickr.com
 DOMAIN-SUFFIX,pinimg.com
 DOMAIN-SUFFIX,atlassian.net
 DOMAIN-SUFFIX,redgifs.com
+DOMAIN-SUFFIX,v2ray.com
 
