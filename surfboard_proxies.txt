@@ -71,6 +71,7 @@ DOMAIN-SUFFIX,vk-portal.net
 DOMAIN-SUFFIX,v2ex.com
 DOMAIN-SUFFIX,duckduckgo.com
 DOMAIN-SUFFIX,apkpure.com
+DOMAIN-SUFFIX,apkmirror.com
 DOMAIN-SUFFIX,tokyomotion.net
 DOMAIN-KEYWORD,yahoo
 DOMAIN-SUFFIX,ytimg.com
@@ -93,6 +94,7 @@ DOMAIN-SUFFIX,goo.gl
 DOMAIN-SUFFIX,pinterest.com
 DOMAIN-SUFFIX,ptt.cc
 DOMAIN-SUFFIX,sexinsex.net
+DOMAIN-SUFFIX,sis001.com
 DOMAIN-SUFFIX,javopen.co
 DOMAIN-SUFFIX,javhd.icu
 DOMAIN-SUFFIX,tiktok.com
