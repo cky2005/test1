@@ -117,5 +117,6 @@ DOMAIN-SUFFIX,pinimg.com
 DOMAIN-SUFFIX,atlassian.net
 DOMAIN-SUFFIX,redgifs.com
 DOMAIN-SUFFIX,v2ray.com
+DOMAIN-SUFFIX,v2fly.org
 DOMAIN-SUFFIX,medium.com
-
+DOMAIN-SUFFIX,netflix.com
