@@ -120,3 +120,5 @@ DOMAIN-SUFFIX,v2ray.com
 DOMAIN-SUFFIX,v2fly.org
 DOMAIN-SUFFIX,medium.com
 DOMAIN-SUFFIX,netflix.com
+DOMAIN-SUFFIX,ip.sb
+DOMAIN-SUFFIX,netease.com
