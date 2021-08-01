@@ -1,0 +1,24 @@
+[custom]
+ruleset=REJECT,https://cdn.staticaly.com/gh/ACL4SSR/ACL4SSR/master/Clash/BanAD.list
+ruleset=REJECT,https://cdn.staticaly.com/gh/ACL4SSR/ACL4SSR/master/Clash/BanProgramAD.list
+ruleset=Telegram,https://cdn.staticaly.com/gh/ACL4SSR/ACL4SSR/master/Clash/Telegram.list
+ruleset=Youtube,https://cdn.staticaly.com/gh/ACL4SSR/ACL4SSR/master/Clash/Ruleset/YouTube.list
+ruleset=Netflix,https://cdn.staticaly.com/gh/ACL4SSR/ACL4SSR/master/Clash/Ruleset/Netflix.list
+ruleset=全局设置,https://cdn.staticaly.com/gh/ACL4SSR/ACL4SSR/master/Clash/ProxyGFWlist.list
+ruleset=全局设置,[]DOMAIN-SUFFIX,ip.sb
+ruleset=全局设置,[]DOMAIN-SUFFIX,netease.com
+ruleset=DIRECT,[]FINAL
+
+custom_proxy_group=全局设置`select`[]自动选择`[]手动选择`[]亚洲节点`[]美国节点`[]专用线路`[]DIRECT
+custom_proxy_group=手动选择`select`.*
+custom_proxy_group=Netflix`select`[]奈飞节点`[]全局设置`.*
+custom_proxy_group=亚洲节点`select`(中国|CN|China|港|HK|Hong Kong|台|新北|彰化|TW|Taiwan|日本|川日|东京|大阪|泉日|埼玉|沪日|深日|[^-]日|JP|Japan|新|新加坡|坡|狮城|SG|Singapore|KR|Korea|KOR|首尔|韩|韓)
+custom_proxy_group=美国节点`select`(美|波特兰|达拉斯|俄勒冈|凤凰城|费利蒙|硅谷|拉斯维加斯|洛杉矶|圣何塞|圣克拉拉|西雅图|芝加哥|US|United States)
+custom_proxy_group=Youtube`select`[]全局设置`.*
+custom_proxy_group=Telegram`select`[]全局设置`.*
+custom_proxy_group=专用线路`select`(IPLC|IEPL|iplc|iepl|专线)
+custom_proxy_group=自动选择`url-test`.*`http://www.gstatic.com/generate_204`300
+custom_proxy_group=奈飞节点`select`(NF|奈飞|解锁|Netflix|NETFLIX|Media|原生)
+
+enable_rule_generator=true
+overwrite_original_rules=true
