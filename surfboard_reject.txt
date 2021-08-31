@@ -18,7 +18,6 @@ DOMAIN-SUFFIX,ssl-youtube.2cnt.net
 DOMAIN-SUFFIX,youtube.112.2o7.net
 DOMAIN-SUFFIX,youtube.2cnt.net
 DOMAIN-SUFFIX,appsflyer.com
-DOMAIN-SUFFIX,mmstat.com
 DOMAIN-SUFFIX,vungle.com
 DOMAIN-SUFFIX,ads.youtube.com
 DOMAIN-SUFFIX,flurry.com
