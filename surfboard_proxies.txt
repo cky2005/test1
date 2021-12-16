@@ -51,6 +51,7 @@ IP-CIDR6,2001:b28:f23f::/48,no-resolve
 # porn
 DOMAIN-SUFFIX,t66y.com
 DOMAIN-SUFFIX,xhamster.com
+DOMAIN-SUFFIX,xhcdn.com
 DOMAIN-SUFFIX,xnxx-cdn.com
 DOMAIN-SUFFIX,xnxx.com
 DOMAIN-SUFFIX,xvideos-cdn.com
@@ -62,11 +63,18 @@ DOMAIN-SUFFIX,pornhubpremium.com
 DOMAIN-SUFFIX,tokyomotion.net
 DOMAIN-SUFFIX,javbus.com
 DOMAIN-SUFFIX,zzzttt04.com
+DOMAIN-SUFFIX,zztt07.com
 DOMAIN-SUFFIX,sis001.com
 DOMAIN-SUFFIX,javopen.co
 DOMAIN-SUFFIX,javhd.icu
 DOMAIN-SUFFIX,sexinsex.net
 DOMAIN-SUFFIX,91porn.com
+DOMAIN-SUFFIX,mgstage.com
+DOMAIN-SUFFIX,sex8.cc
+DOMAIN-SUFFIX,hentaiprn.com
+DOMAIN-SUFFIX,spankbang.com
+DOMAIN-SUFFIX,dmm.co.jp
+
 # github
 DOMAIN-SUFFIX,git.io
 DOMAIN-SUFFIX,github.com
@@ -173,3 +181,4 @@ DOMAIN-SUFFIX,sshocean.com
 DOMAIN-SUFFIX,netflix.com
 DOMAIN-SUFFIX,pbap.cc
 DOMAIN-SUFFIX,tineye.com
+DOMAIN-SUFFIX,dlj.tf
