@@ -838,13 +838,13 @@
 143\.244\.51\.215/24
 
 # Line
-(^|\.)lin\.ee
+(^|\.)lin\.ee$
 (^|\.)line-apps\.com$
 (^|\.)line-cdn\.net$
 (^|\.)line-scdn\.net$
 (^|\.)line\.me$
-(^|\.)line\.naver\.jp
-(^|\.)nhncorp\.jp
+(^|\.)line\.naver\.jp$
+(^|\.)nhncorp\.jp$
 103\.2\.28\.0/24
 103\.2\.30\.0/23
 119\.235\.224\.0/24
@@ -897,7 +897,7 @@
 (^|\.)redgifs\.com$
 (^|\.)medium\.com$
 (^|\.)v2ray\.com$
-(^|\.)v2fly\.org
+(^|\.)v2fly\.org$
 (^|\.)v2cross\.com$
 (^|\.)sshocean\.com$
 (^|\.)netflix\.com$
