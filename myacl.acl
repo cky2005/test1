@@ -708,6 +708,7 @@
 [proxy_list]
 (^|\.)\w*google\w*\.\w*$
 (^|\.)\w*blogspot\w*\.\w*$
+(^|\.)\w*porn\w*\.\w*$
 
 # Google
 (^|\.)ampproject\.com$
